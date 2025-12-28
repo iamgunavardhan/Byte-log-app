@@ -13,7 +13,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 /*import {cacheLife, cacheTag} from "next/cache";*/
 import {connection} from "next/dist/server/request/connection";
 
-
+export const dynamic = "force-dynamic";
 export  default  function BlogPage(){
 
     return(
