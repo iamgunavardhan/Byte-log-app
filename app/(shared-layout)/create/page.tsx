@@ -3,7 +3,7 @@ import { getToken } from "@/lib/auth-server";
 import CreateClient from "@/components/web/CreateClient";
 
 
-/*export const dynamic = "force-dynamic";*/
+
 
 export default async function CreateRoute() {
     const token = await getToken();
