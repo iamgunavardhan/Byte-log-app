@@ -14,7 +14,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 import { redirect } from "next/navigation";
 import { getToken } from "@/lib/auth-server";
 
-export const dynamic = "force-dynamic";
+/*export const dynamic = "force-dynamic";*/
 export  default async function BlogPage(){
     const token = await getToken();
 

@@ -16,7 +16,7 @@ interface PostIdRouteProps {
         postId: Id<"posts">;
     }>
 }
-export const dynamic = "force-dynamic";
+/*export const dynamic = "force-dynamic";*/
 
 export  default async function PostIdRoute({params} : PostIdRouteProps) {
     const {postId} = await params;
