@@ -10,11 +10,17 @@ import {api} from "@/convex/_generated/api";
 
 import {Skeleton} from "@/components/ui/skeleton";
 
-import {cacheLife, cacheTag} from "next/cache";
+/*import {cacheLife, cacheTag} from "next/cache";*/
+import { redirect } from "next/navigation";
+import { getToken } from "@/lib/auth-server";
 
+export const dynamic = "force-dynamic";
+export  default async function BlogPage(){
+    const token = await getToken();
 
-export  default  function BlogPage(){
-
+    if (!token) {
+        redirect("/auth/login");
+    }
     return(
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-20">
             <div className="text-center pb-12">
@@ -35,9 +41,9 @@ export  default  function BlogPage(){
 }
 
 async function LoadBlogPosts(){
-    "use cache"
+   /* "use cache"
     cacheLife("hours")
-    cacheTag("blog")
+    cacheTag("blog")*/
     const  data = await fetchQuery(api.posts.getPosts)
     return(
         <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8">
