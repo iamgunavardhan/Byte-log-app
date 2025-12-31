@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
                 port:"",
             },
             {
-                hostname:"tame-minnow-889.convex.cloud",
+                hostname:"artful-gerbil-141.convex.cloud",
                 protocol:"https",
                 port:""
             }
