@@ -1,4 +1,6 @@
 import DarkVeil from "@/components/ui/DarkVeil";
+import {buttonVariants} from "@/components/ui/button";
+import Link from "next/link";
 
 
 export default function HomePage() {
@@ -15,18 +17,18 @@ export default function HomePage() {
                 development. Built for developers, by developers.
             </p>
             <div className="flex gap-4">
-                <a
+                <Link
                     href="/blog"
-                    className="bg-blue-500 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-600 transition"
+                    className={buttonVariants({ variant: "default" })}
                 >
-                    Read Our Blog
-                </a>
-                <a
+                    Read our Blog
+                </Link>
+                <Link
                     href="/create"
-                    className="border border-blue-500 text-blue-500 px-6 py-3 rounded-md font-medium hover:bg-blue-500 hover:text-white transition"
+                    className={buttonVariants({ variant: "default" })}
                 >
-                    Create a Post
-                </a>
+                    Create
+                </Link>
             </div>
         </section>
     );

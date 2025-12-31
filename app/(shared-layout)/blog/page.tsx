@@ -40,8 +40,30 @@ async function LoadBlogPosts(){
     cacheLife("hours")
     cacheTag("blog")*/
     const  data = await fetchQuery(api.posts.getPosts)
+    if (!data || data.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center py-32 text-center gap-4">
+                <h2 className="text-2xl font-semibold text-foreground">
+                    No posts yet
+                </h2>
+
+                <p className="text-muted-foreground">
+                    Looks empty here. Be the first one to write something.
+                </p>
+
+                <Link
+                    href="/create"
+                    className={buttonVariants({ variant: "default" })}
+                >
+                    Create your first post
+                </Link>
+            </div>
+        );
+    }
+
     return(
         <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8">
+
             {data?.map((post) =>(
                 <Card key={post._id} className="pt-0">
                     <div className="relative h-48 w-full overflow-hidden ">
