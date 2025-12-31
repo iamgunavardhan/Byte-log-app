@@ -19,13 +19,13 @@ export default function HomePage() {
             <div className="flex gap-4">
                 <Link
                     href="/blog"
-                    className={buttonVariants({ variant: "default" })}
+                    className={buttonVariants({ variant: "default",className: "px-6 py-4 text-xl " })}
                 >
-                    Read our Blog
+                    Read Blog
                 </Link>
                 <Link
                     href="/create"
-                    className={buttonVariants({ variant: "default" })}
+                    className={buttonVariants({ variant: "outline",className: "px-6 py-4 text-xl" })}
                 >
                     Create
                 </Link>

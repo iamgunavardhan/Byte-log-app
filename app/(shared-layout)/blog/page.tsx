@@ -20,11 +20,8 @@ export  default async function BlogPage(){
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-20">
             <div className="text-center pb-12">
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-                    Our Blog
+                    ByteLog Blog
                 </h1>
-                <p className="pt-4 max-w-2xl mx-auto text-xl text-muted-foreground">
-                    Insights, thoughts, and trends from our team.
-                </p>
             </div>
 
        {/*<Suspense fallback={<SkeletonLoadingUi/>}>*/}
@@ -53,7 +50,7 @@ async function LoadBlogPosts(){
 
                 <Link
                     href="/create"
-                    className={buttonVariants({ variant: "default" })}
+                    className={buttonVariants({ variant: "default",className: "px-6 py-4 text-xl " })}
                 >
                     Create your first post
                 </Link>
