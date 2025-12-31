@@ -31,6 +31,7 @@ export default function SignUpPage() {
                     onSuccess: () => {
                         toast.success("Account Created  Successfully!");
                         router.push("/")
+                        router.refresh()
                     },
                     onError: (error) => {
                         toast.error(error.error.message);
