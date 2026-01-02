@@ -42,7 +42,7 @@ export default function SignUpPage() {
     }
 
     return(
-        <Card>
+        <Card className="px-4">
             <CardHeader>
                 <CardTitle>Sign Up</CardTitle>
                 <CardDescription>Create an account to get started</CardDescription>

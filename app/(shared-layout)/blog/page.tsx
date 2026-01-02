@@ -50,7 +50,7 @@ async function LoadBlogPosts(){
 
                 <Link
                     href="/create"
-                    className={buttonVariants({ variant: "default",className: "px-6 py-4 text-xl " })}
+                    className={buttonVariants({ variant: "default",className: "px-6 py-4 " })}
                 >
                     Create your first post
                 </Link>
