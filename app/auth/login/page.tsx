@@ -42,7 +42,7 @@ export  default function LoginPage() {
     }
 
     return(
-        <Card className="px-4">
+        <Card>
             <CardHeader>
                 <CardTitle>Login</CardTitle>
                 <CardDescription>Login to get started</CardDescription>
