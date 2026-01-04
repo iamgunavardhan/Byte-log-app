@@ -68,7 +68,7 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div  className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(340px,1fr))]">
+        <div  className="grid gap-8 grid-rows-[repeat(auto-fit,minmax(340px,1fr))]">
 
             {data?.map((post) =>(
                 <Card key={post._id}  className="overflow-hidden rounded-xl border bg-card transition hover:shadow-lg pt-0">
