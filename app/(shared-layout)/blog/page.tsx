@@ -11,6 +11,7 @@ import {api} from "@/convex/_generated/api";
 import {Skeleton} from "@/components/ui/skeleton";
 import {getToken} from "@/lib/auth-server";
 import {redirect} from "next/navigation";
+import {cn} from "@/lib/utils";
 
 /*import {cacheLife, cacheTag} from "next/cache";*/
 
@@ -23,7 +24,7 @@ export  default async function BlogPage(){
     }
 
     return(
-        <div className="max-w-7xl mx-auto  py-12 pt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-20">
             <div className="text-center pb-12">
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
                     ByteLog Blog
@@ -68,7 +69,10 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div  className={cn(
+            "grid gap-6 sm:grid-cols-2 lg:grid-cols-3",
+            data?.length === 1 && "max-w-md mx-auto"
+        )}>
 
             {data?.map((post) =>(
                 <Card key={post._id}  className="overflow-hidden rounded-xl border bg-card transition hover:shadow-lg pt-0">
