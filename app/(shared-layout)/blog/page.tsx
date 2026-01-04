@@ -11,7 +11,6 @@ import {api} from "@/convex/_generated/api";
 import {Skeleton} from "@/components/ui/skeleton";
 import {getToken} from "@/lib/auth-server";
 import {redirect} from "next/navigation";
-import {cn} from "@/lib/utils";
 
 /*import {cacheLife, cacheTag} from "next/cache";*/
 
@@ -69,10 +68,7 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div  className={cn(
-            "grid gap-6 sm:grid-cols-2 lg:grid-cols-3",
-            data?.length === 1 && "max-w-lg mx-auto"
-        )}>
+        <div  className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(340px,1fr))]">
 
             {data?.map((post) =>(
                 <Card key={post._id}  className="overflow-hidden rounded-xl border bg-card transition hover:shadow-lg pt-0">
@@ -80,7 +76,7 @@ async function LoadBlogPosts(){
                         <Image src={post.imageUrl ?? "https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg"} alt="image" fill className="rounded-t-lg object-cover"/>
                     </div>
 
-                    <CardContent>
+                    <CardContent className="p-6 space-y-3">
                         <Link href={`/blog/${post._id}`}>
                             <h1 className="text-2xl font-bold hover:text-blue-600">{post.title}</h1>
                         </Link>
