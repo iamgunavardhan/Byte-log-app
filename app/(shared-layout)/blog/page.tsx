@@ -9,12 +9,18 @@ import {fetchQuery} from "convex/nextjs";
 import {api} from "@/convex/_generated/api";
 
 import {Skeleton} from "@/components/ui/skeleton";
+import {getToken} from "@/lib/auth-server";
+import {redirect} from "next/navigation";
 
 /*import {cacheLife, cacheTag} from "next/cache";*/
 
 
 
 export  default async function BlogPage(){
+    const token = await getToken();
+    if (!token) {
+        redirect("/auth/login");
+    }
 
     return(
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-20">
@@ -24,13 +30,16 @@ export  default async function BlogPage(){
                 </h1>
             </div>
 
-       {/*<Suspense fallback={<SkeletonLoadingUi/>}>*/}
-           <LoadBlogPosts />
-       {/*</Suspense>*/}
+            {/*<Suspense fallback={<SkeletonLoadingUi/>}>*/}
+            <LoadBlogPosts />
+            {/*</Suspense>*/}
         </div>
 
     )
 }
+
+
+
 
 async function LoadBlogPosts(){
    /* "use cache"
