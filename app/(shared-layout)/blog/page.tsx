@@ -71,7 +71,7 @@ async function LoadBlogPosts(){
     return(
         <div  className={cn(
             "grid gap-6 sm:grid-cols-2 lg:grid-cols-3",
-            data?.length === 1 && "max-w-md mx-auto"
+            data?.length === 1 && "max-w-lg mx-auto"
         )}>
 
             {data?.map((post) =>(
