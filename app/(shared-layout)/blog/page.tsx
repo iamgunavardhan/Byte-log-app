@@ -68,10 +68,10 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" >
 
             {data?.map((post) =>(
-                <Card key={post._id}  className="overflow-hidden rounded-xl border bg-card transition hover:shadow-lg pt-0 w-2/3">
+                <Card key={post._id}  className="pt-0 ">
                     <div className="relative h-52 w-full overflow-hidden ">
                         <Image src={post.imageUrl ?? "https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg"} alt="image" fill className="rounded-t-lg object-cover"/>
                     </div>
