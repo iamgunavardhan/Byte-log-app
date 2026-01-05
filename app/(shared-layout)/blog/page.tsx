@@ -68,17 +68,17 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" >
+        <div className="grid gap-6 grid-cols-[repeat(auto-fill,320px)] justify-center" >
 
             {data?.map((post) =>(
-                <Card key={post._id}  className="pt-0 ">
+                <Card key={post._id}   className="w-[320px] shrink-0 pt-0">
                     <div className="relative h-52 w-full overflow-hidden ">
                         <Image src={post.imageUrl ?? "https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg"} alt="image" fill className="rounded-t-lg object-cover"/>
                     </div>
 
                     <CardContent>
                         <Link href={`/blog/${post._id}`}>
-                            <h1 className="text-2xl font-bold hover:text-blue-600">{post.title}</h1>
+                            <h1 className="text-2xl font-bold hover:text-blue-600 line-clamp-2">{post.title}</h1>
                         </Link>
                         <p className="text-muted-foreground line-clamp-3">{post.body}</p>
                     </CardContent>
