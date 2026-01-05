@@ -68,7 +68,7 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div className="grid gap-6 grid-cols-[repeat(auto-fill,320px)] justify-center" >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" >
 
             {data?.map((post) =>(
                 <Card key={post._id}   className="w-[320px] shrink-0 pt-0">
