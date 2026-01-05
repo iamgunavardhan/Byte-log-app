@@ -23,7 +23,7 @@ export  default async function BlogPage(){
     }
 
     return(
-        <div className="max-w-[1400px] mx-auto px-6 py-12 pt-20">
+        <div className="max-w-[1400px] mx-auto px-4 py-12 pt-20">
             <div className="text-center pb-12">
                 <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
                     ByteLog Blog
@@ -68,7 +68,7 @@ async function LoadBlogPosts(){
     }
 
     return(
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 gap-12" >
 
             {data?.map((post) =>(
                 <Card key={post._id}  className="overflow-hidden rounded-xl border bg-card transition hover:shadow-lg pt-0">
