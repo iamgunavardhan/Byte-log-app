@@ -7,16 +7,23 @@ import {Field, FieldError, FieldGroup, FieldLabel} from "@/components/ui/field";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {Button} from "@/components/ui/button";
-import z from "zod";
+
 import {useTransition} from "react";
 import {Loader2} from "lucide-react";
-import {createBlogAction} from "@/app/actions";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import z from "zod";
+
+
 
 
 
 
 export default function CreateClient () {
     const [isPending, startTransition] = useTransition();
+    const generateUploadUrl = useMutation(api.posts.generateUploadUrl);
+    const createPost = useMutation(api.posts.createPost);
+
     const form = useForm({
         resolver : zodResolver(postSchema),
         defaultValues: {title: "", content: "",image:undefined},
@@ -24,9 +31,36 @@ export default function CreateClient () {
 
     function onSubmit(values: z.infer<typeof postSchema>) {
         startTransition(async () => {
-            await createBlogAction(values)
-        })
+            let imageStorageId = undefined;
+
+            // 1️⃣ If user selected an image, upload it to Convex Storage
+            if (values.image) {
+                // Ask Convex for a temporary upload URL
+                const uploadUrl = await generateUploadUrl();
+
+                // Upload file directly from browser to Convex Storage
+                const response = await fetch(uploadUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": values.image.type,
+                    },
+                    body: values.image,
+                });
+
+                // Convex returns a storageId
+                const { storageId } = await response.json();
+                imageStorageId = storageId;
+            }
+
+            // 2️⃣ Create post using ONLY serializable data
+            await createPost({
+                title: values.title,
+                body: values.content,
+                imageStorageId,
+            });
+        });
     }
+
     return (
         <div className="px-4 py-12 pt-20">
             <div className="text-center mb-12">
