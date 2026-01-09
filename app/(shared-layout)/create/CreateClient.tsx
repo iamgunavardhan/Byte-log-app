@@ -13,6 +13,10 @@ import {Loader2} from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import z from "zod";
+import {useRouter} from "next/navigation";
+import {toast} from "sonner";
+
+
 
 
 
@@ -22,6 +26,7 @@ import z from "zod";
 export default function CreateClient () {
     const [isPending, startTransition] = useTransition();
     const generateUploadUrl = useMutation(api.posts.generateUploadUrl);
+    const router = useRouter();
     const createPost = useMutation(api.posts.createPost);
 
     const form = useForm({
@@ -58,6 +63,10 @@ export default function CreateClient () {
                 body: values.content,
                 imageStorageId,
             });
+            toast.success("Your Blog Post created Successfully!");
+            setTimeout(() => {
+                router.push("/blog");
+            }, 500);
         });
     }
 
