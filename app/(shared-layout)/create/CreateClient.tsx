@@ -66,7 +66,7 @@ export default function CreateClient () {
             toast.success("Your Blog Post created Successfully!");
             setTimeout(() => {
                 router.push("/blog");
-            }, 500);
+            }, 200);
         });
     }
 
